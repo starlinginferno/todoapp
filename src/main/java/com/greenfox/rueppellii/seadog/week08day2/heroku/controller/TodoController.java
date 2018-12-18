@@ -20,36 +20,23 @@ public class TodoController {
         this.repo = repo;
     }
 
-    @GetMapping("/list")
-    public String list(Model model, @RequestParam(required=false) String todoitem) {
-        model.addAttribute("todo", repo.findAll());
-        return "todo";
-    }
-
     @GetMapping("/")
-    public String listActive(Model model) {
-        //      public String listActive(Model model, @RequestParam boolean isActive)
-        //      model.addAttribute("todo", repo.findAllByDone(isActive));
+    public String list(Model model, @RequestParam(required=false) String todoitem, @ModelAttribute(name="todoObject") Todo todo) {
+    //    model.addAttribute("todoObject", todo);
         model.addAttribute("todo", repo.findAll());
         return "todo";
     }
 
-    @GetMapping("/add")
-    public String addTodo(Model model, @ModelAttribute(name="todo") Todo todo) {
-        model.addAttribute("todo", todo);
-        return "add";
-    }
-
-    @PostMapping("/add")
-    public String addTodo(@ModelAttribute(name="todo") Todo todo) {
+    @PostMapping("/")
+    public String addTodo(@ModelAttribute(name="todoObject") Todo todo) {
         repo.save(todo);
-        return "redirect:/todo/list";
+        return "redirect:/todo/";
     }
 
     @RequestMapping(value ="/{todoId}/delete", method = RequestMethod.POST)
     public String deleteTask(@PathVariable("todoId") Long id) {
         repo.deleteById(id);
-        return "redirect:/todo/list";
+        return "redirect:/todo/";
     }
 
     @RequestMapping(value ="/{todoId}/edit", method = RequestMethod.GET)
@@ -62,6 +49,6 @@ public class TodoController {
     @RequestMapping(value ="/{todoId}/edit", method = RequestMethod.POST)
     public String editTask(@PathVariable("todoId") Long id, @ModelAttribute(name="todoEdit") Todo todo) {
         repo.save(todo);
-        return "redirect:/todo/list";
+        return "redirect:/todo/";
     }
 }

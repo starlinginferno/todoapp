@@ -6,7 +6,15 @@
 </head>
 <body>
 <nav><a href="/todo/add">Add new task</a> </nav>
-<h1>Todos for today:</h1>
+<h1>Todos</h1>
+<h2>New Todo</h2>
+<div>
+    <form action="#" th:action="@{/todo/}" method="post" th:object="${todoObject}">
+        <label for="name">Task</label>
+        <input type="text" id="name" th:field="*{title}" required autofocus>
+        <button type="submit">GO</button>
+    </form>
+</div>
 <div>
     <table class="my-table">
         <thead>
