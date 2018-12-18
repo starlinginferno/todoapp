@@ -17,8 +17,8 @@
     </form>
 </div>
 <div>
-    <table class="table">
-        <thead class="thead-dark">
+    <table class="table table-hover">
+        <thead>
         <tr>
             <th>ID</th>
             <th>ACTION</th>
@@ -35,8 +35,8 @@
             <td th:text="${todoItem.getDone()}"></td>
             <td th:text="${todoItem.getUrgent()}"></td>
             <td> <form action="#" th:action="@{|${todoItem.getId()}/delete|}" method="POST">
-                <p><input th:type="submit" value="delete" class="btn btn-dark" /></p></form></td>
-            <td><a class="btn btn-dark" th:href="@{|${todoItem.getId()}/edit|}">Edit</a></td>
+                <p><input th:type="submit" value="delete" class="btn btn-outline-danger" /></p></form></td>
+            <td><a th:href="@{|${todoItem.getId()}/edit|}" class="btn btn-outline-primary">Edit</a></td>
         </tr>
         </tbody>
     </table>

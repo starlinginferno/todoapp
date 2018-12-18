@@ -6,7 +6,7 @@
     <title>Edit task</title>
 </head>
 <body>
-<form action="#" th:object="${todoEdit}" th:action="@{|/todo/${todoEdit.getId()}/edit|}" method="POST">
+<form action="#" th:object="${todoEdit}" th:action="@{|/todo/${todoEdit.getId()}/edit|}" method="POST" class="form-inline">
     <label for="title">Title</label>
     <input th:type="text" id="title" th:field="*{title}" required autofocus/>
     <label for="urgent">Urgent</label>
@@ -14,7 +14,9 @@
     <label for="done">Done</label>
     <input th:type="checkbox" id="done" th:field="*{done}"/>
     <input th:type="hidden" th:field="*{id}"/>
-    <input th:type="submit" th:value="DONE"/>
+    <input th:type="submit" th:value="DONE" class="btn btn-primary"/>
 </form>
+<script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 </body>
 </html>
