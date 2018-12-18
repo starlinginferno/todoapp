@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit task</title>
+</head>
+<body>
+<form action="#" th:object="${todoEdit}" th:action="@{|/todo/${todoEdit.getId()}/edit|}" method="POST">
+    <label for="title">Title</label>
+    <input th:type="text" id="title" th:field="*{title}" required autofocus/>
+    <label for="urgent">Urgent</label>
+    <input th:type="checkbox" id="urgent" th:field="*{urgent}"/>
+    <label for="done">Done</label>
+    <input th:type="checkbox" id="done" th:field="*{done}"/>
+    <input th:type="hidden" th:field="*{id}"/>
+    <input th:type="submit" th:value="DONE"/>
+</form>
+</body>
+</html>
