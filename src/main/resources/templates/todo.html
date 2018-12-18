@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <title>To Do List</title>
 </head>
 <body>
@@ -29,8 +29,8 @@
         </thead>
         <tbody>
         <tr th:each="todoItem : ${todo}">
-            <td><span th:if="${todoItem.getDone()}" th:text="${todoItem.getTitle()}"></span><span th:unless="${todoItem.getDone()}" th:text="${todoItem.getTitle()}"></span></td>
-            <td th:text="${todoItem.getDone()}" id="crossed"></td>
+            <td><span th:if="${todoItem.getDone()}" th:text="${todoItem.getTitle()}" id="crossed"></span><span th:unless="${todoItem.getDone()}" th:text="${todoItem.getTitle()}"></span></td>
+            <td th:text="${todoItem.getDone()}"></td>
             <td th:text="${todoItem.getUrgent()}"></td>
             <td> <form action="#" th:action="@{|${todoItem.getId()}/delete|}" method="POST">
                 <p><input th:type="submit" value="delete" class="btn btn-danger" /></p></form></td>
